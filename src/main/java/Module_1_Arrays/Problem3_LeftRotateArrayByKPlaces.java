@@ -2,6 +2,8 @@ package Module_1_Arrays;
 
 import java.util.Arrays;
 
+// https://leetcode.com/problems/rotate-array/description/
+
 public class Problem3_LeftRotateArrayByKPlaces {
 
     public static void main(String[] args) {
