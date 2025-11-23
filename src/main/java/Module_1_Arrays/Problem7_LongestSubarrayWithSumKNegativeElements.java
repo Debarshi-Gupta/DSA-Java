@@ -3,6 +3,8 @@ package Module_1_Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+// https://takeuforward.org/arrays/longest-subarray-with-sum-k-postives-and-negatives/
+
 public class Problem7_LongestSubarrayWithSumKNegativeElements {
 
     public static void main(String[] args) {
