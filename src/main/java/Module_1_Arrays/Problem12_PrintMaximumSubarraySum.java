@@ -2,6 +2,8 @@ package Module_1_Arrays;
 
 // https://takeuforward.org/data-structure/kadanes-algorithm-maximum-subarray-sum-in-an-array/
 
+import java.util.Arrays;
+
 public class Problem12_PrintMaximumSubarraySum {
 
     public static void main(String[] args) {
@@ -10,38 +12,36 @@ public class Problem12_PrintMaximumSubarraySum {
     }
 
     public static void printMaximumSubarraySum(int[] nums) {
-        int sum = 0;
-        int maxSum = Integer.MIN_VALUE;
+        int sum = nums[0];
+        int maxSum = nums[0];
 
-        int start = 0;
-        int end = 0;
+        int[] index = new int[2];
+        int[] maxIndex = new int[2];
 
-        int maxStart = 0;
-        int maxEnd = 0;
+        for (int i=1; i<nums.length; i++) {
+            int oldSum = sum+nums[i];
+            int newSum = nums[i];
 
-        for (int i=0; i<nums.length; i++) {
-            if (sum+nums[i]>=nums[i]) {
-                end = i;
-                sum += nums[i];
+            if (oldSum>=newSum) {
+                sum = oldSum;
+                index[1] = i;
                 if (sum>maxSum) {
                     maxSum = sum;
-                    maxStart = start;
-                    maxEnd = end;
+                    maxIndex = Arrays.copyOf(index, index.length);
                 }
             }
             else {
-                start = i;
-                end = i;
-                sum = nums[i];
+                sum = newSum;
+                index[0] = i;
+                index[1] = i;
                 if (sum>maxSum) {
                     maxSum = sum;
-                    maxStart = start;
-                    maxEnd = end;
+                    maxIndex = Arrays.copyOf(index, index.length);
                 }
             }
         }
 
-        for (int i=maxStart; i<=maxEnd; i++) {
+        for (int i=maxIndex[0]; i<=maxIndex[1]; i++) {
             System.out.print(nums[i]+" ");
         }
     }
